@@ -32,7 +32,7 @@
     // do windows stuff
 #else
     // mac and linux need this
-    #include <libusb.h>
+    #include <usb.h>
 #endif
 
 class ofxNFCReader: protected ofThread {
