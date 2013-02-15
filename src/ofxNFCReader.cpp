@@ -92,7 +92,7 @@ void ofxNFCReader::threadedFunction() {
     ofLog(OF_LOG_WARNING,"ofxNFCReader: Can't read tag. No device connected.");
     return ;
   }
-  const uint8_t uiPollNr = 0xFF;
+  const uint8_t uiPollNr = 1;
   const uint8_t uiPeriod = 1;
   const size_t szModulations = 1;
   const nfc_modulation nmModulations[szModulations] = {
@@ -109,9 +109,9 @@ void ofxNFCReader::threadedFunction() {
   int res = 0;
 
 	while(isThreadRunning()) {
-    ofLog(OF_LOG_NOTICE, "NFC device will poll during %ld ms (%u pollings of %lu ms for %zd modulations)\n", (unsigned long) uiPollNr * szModulations * uiPeriod * 150, uiPollNr, (unsigned long) uiPeriod * 150, szModulations);
+    //ofLog(OF_LOG_NOTICE, "NFC device will poll during %ld ms (%u pollings of %lu ms for %zd modulations)\n", (unsigned long) uiPollNr * szModulations * uiPeriod * 150, uiPollNr, (unsigned long) uiPeriod * 150, szModulations);
     if ((res = nfc_initiator_poll_target(pnd, nmModulations, szModulations, uiPollNr, uiPeriod, &nt))  < 0) {
-      nfc_perror(pnd, "nfc_initiator_poll_target");
+      //nfc_perror(pnd, "nfc_initiator_poll_target");
     }
 
     if (res > 0) {
@@ -119,7 +119,7 @@ void ofxNFCReader::threadedFunction() {
       bool verbose = false;
       char *s;
       str_nfc_target(&s, nt, verbose);
-      ofLog(OF_LOG_NOTICE, s);
+      //ofLog(OF_LOG_NOTICE, s);
       free(s);
 
       // get uid
@@ -146,7 +146,7 @@ void ofxNFCReader::threadedFunction() {
         ofLog(OF_LOG_WARNING,"ofxNFCReader: Can't get UID. Tag is not of type  ISO 14443A");
       }
     } else {
-      ofLog(OF_LOG_NOTICE, "No target found.\n");
+      //ofLog(OF_LOG_NOTICE, "No target found.\n");
       if (targetUid != -1){
           ofNotifyEvent(tagLeftEvent, targetUid, this);
           targetUid = -1;

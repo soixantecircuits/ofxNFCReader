@@ -71,18 +71,14 @@ cd bin
 ./example_debug
 </pre>
 
-Also, you should create some udev rules in order to run the app without root privileges. As the root user, write this to `/etc/udev/rules.d/51-kinect.rules` (this works on Ubuntu 10.10):
+Also, you should create some udev rules in order to run the app without root privileges. As the root user, write this to `/etc/udev/rules.d/51-ACR122.rules` (this works on Ubuntu 10.10):
 <pre>
-SUBSYSTEM=="usb", SYSFS{idVendor}=="045e", SYSFS{idProduct}=="02ae", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", SYSFS{idVendor}=="045e", SYSFS{idProduct}=="02ad", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", SYSFS{idVendor}=="045e", SYSFS{idProduct}=="02b0", MODE="0660", GROUP="plugdev"
+SUBSYSTEM=="usb", SYSFS{idVendor}=="072f", SYSFS{idProduct}=="2200", MODE="0660", GROUP="plugdev"
 </pre>
 
 From Ubuntu 12.10 the correct settings for udev rules are:
 <pre>
-SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ae", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ad", MODE="0660", GROUP="plugdev"
-SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02b0", MODE="0660", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{idVendor}=="072f", ATTR{idProduct}=="2200", MODE="0660", GROUP="plugdev"
 </pre>
 
 
