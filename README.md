@@ -149,6 +149,19 @@ Notes
 ### Using multiple kinects
 Not supported yet.
 
+Troubleshooting
+---------------
+
+If you see this in the console: 
+
+`error	libnfc.driver.acr122_usb	Unable to claim USB interface (Permission denied)`
+
+Just kill the processus like this:
+
+`sudo launchctl list | grep pcscd`
+
+`sudo kill -9 thePID`
+
 Developing ofxNFCReader
 --------------------
 
