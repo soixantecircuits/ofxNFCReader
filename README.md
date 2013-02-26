@@ -19,11 +19,10 @@ It is under development.
 
 It has been tested with a [ACR122 NFC reader](http://nfc-tools.org/index.php?title=ACR122) and ISO14443A tags.
 
-It has been tested on linux only.
+It has been tested on linux mint, os x 10.8 and 10.6.
 
 The roadmap is:
 
-* os x support
 * write tags
 * mutiple devices connected
 
@@ -54,6 +53,23 @@ The example projects are in the `example` folder.
 Xcode3: Open the Xcode project and hit "Build and Run". You might want to choose "Release" instead of "Debug" for faster performance.
 
 Xcode4: Open the Xcode project, select the "ofxNFCReaderExample" scheme, and hit "Run".
+
+Since OS X Lion, the PC/SC Smartcard Daemon ([pcscd](https://developer.apple.com/library/mac/#documentation/Darwin/Reference/ManPages/man8/pcscd.8.html)) recognizes NFC Reader and automatically starts a communication with it.
+
+Therefore, if you see this in the console: 
+
+`error	libnfc.driver.acr122_usb	Unable to claim USB interface (Permission denied)`
+
+It must be pcscd using your NFC Reader. 
+To claim the device for your program, you can kill the processus like this:
+
+```
+$ sudo launchctl list | grep pcscd
+$ sudo kill -9 thePID
+```
+
+or use the oneliner:
+`$ kill $(ps aux | grep '[p]cscd' | awk '{print $2}')`
 
 ### Linux
 
@@ -94,7 +110,7 @@ To develop your own project based on ofxNFCReader, simply copy the example proje
 
 Then after renaming:
 
-`openFrameworks/apps/myApps/myKinectProject/`
+`openFrameworks/apps/myApps/myProject/`
 
 ### Mac (Xcode):
 
@@ -146,21 +162,12 @@ Edit the Makefile config files:
 Notes
 -----
 
-### Using multiple kinects
+### Using multiple NFC Readers
 Not supported yet.
 
 Troubleshooting
 ---------------
 
-If you see this in the console: 
-
-`error	libnfc.driver.acr122_usb	Unable to claim USB interface (Permission denied)`
-
-Just kill the processus like this:
-
-`sudo launchctl list | grep pcscd`
-
-`sudo kill -9 thePID`
 
 Developing ofxNFCReader
 --------------------
