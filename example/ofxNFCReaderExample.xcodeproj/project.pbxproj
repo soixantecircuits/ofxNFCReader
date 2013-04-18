@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		976E2325172028620004EFE9 /* libusb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 976E2323172028620004EFE9 /* libusb.a */; };
+		976E2326172028620004EFE9 /* usb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 976E2324172028620004EFE9 /* usb-1.0.a */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -64,6 +66,9 @@
 		218cd57fba4bcc5e6071fead33c27550 /* ofxNFCReader.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNFCReader.cpp; path = ../../../addons/ofxNFCReader/src/ofxNFCReader.cpp; sourceTree = SOURCE_ROOT; };
 		4fb83233718d129c8a87e49bdc2b14c9 /* nfc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = nfc.h; path = ../../../addons/ofxNFCReader/libs/libnfc/include/nfc/nfc.h; sourceTree = SOURCE_ROOT; };
 		7eb73b5811b2a25f8d3f0a27f44b5d9e /* nfc-types.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "nfc-types.h"; path = "../../../addons/ofxNFCReader/libs/libnfc/include/nfc/nfc-types.h"; sourceTree = SOURCE_ROOT; };
+		976E2320172028620004EFE9 /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = usb.h; sourceTree = "<group>"; };
+		976E2323172028620004EFE9 /* libusb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libusb.a; sourceTree = "<group>"; };
+		976E2324172028620004EFE9 /* usb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "usb-1.0.a"; sourceTree = "<group>"; };
 		9cb55ba866ab70202490aba4be48b829 /* nfc-emulation.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "nfc-emulation.h"; path = "../../../addons/ofxNFCReader/libs/libnfc/include/nfc/nfc-emulation.h"; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
@@ -114,6 +119,8 @@
 				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
 				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
+				976E2325172028620004EFE9 /* libusb.a in Frameworks */,
+				976E2326172028620004EFE9 /* usb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,9 +139,45 @@
 		716efd67429938ffb1d1fc458d97785a /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				976E231E172028620004EFE9 /* libusb */,
 				c9ff21108ef26710a12d157be5b7e326 /* libnfc */,
 			);
 			name = libs;
+			sourceTree = "<group>";
+		};
+		976E231E172028620004EFE9 /* libusb */ = {
+			isa = PBXGroup;
+			children = (
+				976E231F172028620004EFE9 /* include */,
+				976E2321172028620004EFE9 /* lib */,
+			);
+			name = libusb;
+			path = ../libs/libusb;
+			sourceTree = "<group>";
+		};
+		976E231F172028620004EFE9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				976E2320172028620004EFE9 /* usb.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		976E2321172028620004EFE9 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				976E2322172028620004EFE9 /* osx */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		976E2322172028620004EFE9 /* osx */ = {
+			isa = PBXGroup;
+			children = (
+				976E2323172028620004EFE9 /* libusb.a */,
+				976E2324172028620004EFE9 /* usb-1.0.a */,
+			);
+			path = osx;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -541,7 +584,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				OTHER_LDFLAGS = (
 					"../../../addons/ofxNFCReader/libs/libusb/lib/osx/usb-1.0.a",
 					"$(OF_CORE_LIBS)",
@@ -633,7 +678,9 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				OTHER_LDFLAGS = (
 					"../../../addons/ofxNFCReader/libs/libusb/lib/osx/usb-1.0.a",
 					"$(OF_CORE_LIBS)",
