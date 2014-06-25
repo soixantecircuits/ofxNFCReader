@@ -162,6 +162,11 @@ Edit the Makefile config files:
 Notes
 -----
 
+### Linux: Unable to claim USB interface
+
+If you get an error like `Unable to claim USB interface` when executing `nfc-list`, follow these [instructions by Romuald Conty](http://www.libnfc.org/community/post/3323/#p3323) (post number 3).
+
+
 ### Using multiple NFC Readers
 Not supported yet.
 
