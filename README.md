@@ -164,8 +164,15 @@ Notes
 
 ### Linux: Unable to claim USB interface
 
-If you get an error like `Unable to claim USB interface` when executing `nfc-list`, follow these [instructions by Romuald Conty](http://web.archive.org/web/20131017062059/http://www.libnfc.org/community/post/3323/) (post number 3).
+If you get an error like `Unable to claim USB interface` when executing `nfc-list`, follow these [instructions by Romuald Conty](http://web.archive.org/web/20131017062059/http://www.libnfc.org/community/post/3323/) (post number 3):
 
+> On recent Linux kernel (>= 3.1) you need to prevent modprobe from autoload pn533 and nfc modules.
+To do that, create /etc/modprobe.d/blacklist-libnfc.conf with this content:
+```bash
+blacklist pn533
+blacklist nfc
+```
+Then, restart or unplug the device, unload modules (sudo modprobe -r pn533 nfc), then re-plug the devive.
 
 ### Using multiple NFC Readers
 Not supported yet.
